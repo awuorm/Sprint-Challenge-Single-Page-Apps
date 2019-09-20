@@ -20,14 +20,16 @@ export default function CharacterList() {
 
   //<Route path="/components/CharacterList" render={() => <CharacterList/>}/>
 
-  return (
-       charactersList.map((character) => {
+  return (<>
+      <h1>Character List</h1>
+       {charactersList.map((character) => {
         return (<>
-          <p>{character.name}</p>
-            <p>{character.species}</p>
-            <p>{character.gender}</p>
+          <p> Character Name: {character.name}</p>
+            <p>Character species: {character.species}</p>
+            <p> Character gender: {character.gender}</p>
             </> )
-  })
+  })}
+  </>
 )
      
     
