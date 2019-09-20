@@ -31,7 +31,7 @@ export default function CharacterCard(props) {
     <>
       <NavLink to="/">Home</NavLink>
       <H1Styled>Character</H1Styled>
-      <img src={`${character.image}`} />
+      <img src={`${character.image}`} alt={`${character.image}`} />
       <p> Character Name: {character.name}</p>
       <p>Character species: {character.species}</p>
       <p> Character gender: {character.gender}</p>

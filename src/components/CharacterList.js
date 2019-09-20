@@ -4,6 +4,7 @@ import { NavLink, Route } from "react-router-dom";
 import { func } from "prop-types";
 import styled from "styled-components";
 import SearchForm from "./SearchForm";
+import uuid from "uuid";
 
 const CListStyled = styled.div`
   background-color: skyblue;
@@ -27,12 +28,12 @@ export default function CharacterList(props) {
       .then(response => {
         setInitialCharacters(initialCharacters.concat(response.data.results));
         setCharactersList(charactersList.concat(response.data.results));
-        console.log(charactersList);
+        
       })
       .catch(error => error.message);
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
+  },[]);
 
   const filterCharacters = event => {
     let filterArray = initialCharacters;
@@ -49,7 +50,7 @@ export default function CharacterList(props) {
       <SearchForm onSearch={filterCharacters} />
       {charactersList.map(character => {
         return (
-          <CListStyled>
+          <CListStyled key={character.id}>
             <p> Character Name: {character.name}</p>
             <p>Character species: {character.species}</p>
             <p> Character gender: {character.gender}</p>
@@ -57,7 +58,6 @@ export default function CharacterList(props) {
               render={props => (
                 <CharacterClicked
                   {...props}
-                  key={character.id}
                   character={character}
                 />
               )}
@@ -69,8 +69,7 @@ export default function CharacterList(props) {
   );
 }
 
-const CharacterClicked = character => {
-  console.log(" hello from characterclicked");
+const CharacterClicked = (character) => {
   const id = character.character.id;
   return (
     <NavLink to={`/components/CharacterList/${id}`}>
