@@ -25,5 +25,6 @@ export default function CharacterCard(props) {
         <p> Character Name: {character.name}</p>
           <p>Character species: {character.species}</p>
           <p> Character gender: {character.gender}</p>
+          <img src={`${character.iamge}`}/>
           </> )
 }

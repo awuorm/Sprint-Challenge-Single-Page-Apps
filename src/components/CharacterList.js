@@ -2,6 +2,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {NavLink} from "react-router-dom";
 import { func } from "prop-types";
+import styled from "styled-components";
+
+const CListStyled = styled.div`
+    background-color: skyblue;
+    border: 1em solid sandybrown;
+    margin: 1em;
+    padding: 1em;
+`;
+const H1Styled= styled.h1`
+    text-align:center;
+    color: sandybrown;
+`;
+
 
 export default function CharacterList(props) {
   console.log(props);
@@ -24,15 +37,15 @@ export default function CharacterList(props) {
   //<Route path="/components/CharacterList" render={() => <CharacterList/>}/>
 
   return (<>
-      <h1>Character List</h1>
+      <H1Styled>Character List</H1Styled>
        {charactersList.map((character) => {
-        return (<>
+        return (<CListStyled>
           <p> Character Name: {character.name}</p>
             <p>Character species: {character.species}</p>
             <p> Character gender: {character.gender}</p>
             <CharacterClicked key={character.id} character={character}/>
             
-            </> )
+            </CListStyled> )
   })}
   </>
 )   
