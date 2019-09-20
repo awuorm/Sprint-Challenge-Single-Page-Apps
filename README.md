@@ -27,15 +27,14 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
+
+> Answer:
+
 Client side routing refers to when URL page loading is handled by the browser without having to fetch a resource from the server. Client side routing has the following benefits:
     1. It allows for seamless navigation of pages within the browser, as all the resources are preloaded when the
         webpage loads.
     2. Animations and other interactions within the webpage are easier to handle and transition smoothly.
-
-
-    
-
-> Answer:
+ 
 
 ## Project Set Up
 
