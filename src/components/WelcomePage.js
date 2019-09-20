@@ -1,10 +1,9 @@
 import React from "react";
-// import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 
-const H1Styled= styled.h1`
-    text-align:center;
-    color: sandybrown;
+const H1Styled = styled.h1`
+  text-align: center;
+  color: sandybrown;
 `;
 
 export default function WelcomePage() {
@@ -18,7 +17,6 @@ export default function WelcomePage() {
           alt="rick"
         />
       </header>
-      
     </section>
   );
 }

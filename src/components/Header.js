@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const H1Styled= styled.h1`
-    text-align:center;
-    color: sandybrown;
+const H1Styled = styled.h1`
+  text-align: center;
+  color: sandybrown;
 `;
 
 export default function Header() {
