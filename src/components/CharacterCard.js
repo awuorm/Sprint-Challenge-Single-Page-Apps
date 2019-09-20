@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import styled from "styled-components";
+import {NavLink} from "react-router-dom";
+
+const H1Styled = styled.h1`
+  text-align: center;
+  color: sandybrown;
+`;
 
 export default function CharacterCard(props) {
   const [character, setCharacter] = useState({});
@@ -22,11 +29,12 @@ export default function CharacterCard(props) {
 
   return (
     <>
-      <h1>Character List</h1>
+      <NavLink to="/">Home</NavLink>
+      <H1Styled>Character</H1Styled>
+      <img src={`${character.image}`} />
       <p> Character Name: {character.name}</p>
       <p>Character species: {character.species}</p>
       <p> Character gender: {character.gender}</p>
-      <img src={`${character.image}`} />
     </>
   );
 }

@@ -34,19 +34,19 @@ export default function CharacterList(props) {
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
   }, []);
 
-  const filterList = event => {
-    let items = initialCharacters;
-    items = items.filter(
+  const filterCharacters = event => {
+    let filterArray = initialCharacters;
+    filterArray = filterArray.filter(
       item =>
         item.name.toLowerCase().search(event.target.value.toLowerCase()) !== -1
     );
-    setCharactersList(items);
+    setCharactersList(filterArray);
   };
 
   return (
     <>
       <H1Styled>Character List</H1Styled>
-      <SearchForm onSearch={filterList} />
+      <SearchForm onSearch={filterCharacters} />
       {charactersList.map(character => {
         return (
           <CListStyled>
