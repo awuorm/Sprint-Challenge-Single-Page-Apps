@@ -8,13 +8,9 @@ import CharacterCard from "./components/CharacterCard.js";
 export default function App() {
   return (
     <main>
-      <Route render={() => <Header />} />
-      <Route exact path="/" render={() => <WelcomePage />} />
-      <Route
-        exact
-        path="/components/CharacterList"
-        render={props => <CharacterList />}
-      />
+      <Route component={Header} />
+      <Route exact path="/" component={WelcomePage} />
+      <Route exact path="/components/CharacterList/" component={CharacterList}/>
       <Route
         path="/components/CharacterList/:id"
         render={props => <CharacterCard {...props} />}
