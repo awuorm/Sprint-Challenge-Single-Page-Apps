@@ -1,16 +1,79 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { NavLink, Route } from "react-router-dom";
+import { func } from "prop-types";
+import styled from "styled-components";
+import SearchForm from "./SearchForm";
+import uuid from "uuid";
 
-export default function CharacterList() {
+const CListStyled = styled.div`
+  background-color: skyblue;
+  border: 1em solid sandybrown;
+  margin: 1em;
+  padding: 1em;
+`;
+const H1Styled = styled.h1`
+  text-align: center;
+  color: sandybrown;
+`;
+
+export default function CharacterList(props) {
+  const [charactersList, setCharactersList] = useState([]);
+  const [initialCharacters, setInitialCharacters] = useState([]);
   // TODO: Add useState to track data from useEffect
-
+  const charactersApi = `https://rickandmortyapi.com/api/character/`;
   useEffect(() => {
+    axios
+      .get(charactersApi)
+      .then(response => {
+        setInitialCharacters(initialCharacters.concat(response.data.results));
+        setCharactersList(charactersList.concat(response.data.results));
+        
+      })
+      .catch(error => error.message);
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
+  },[]);
+
+  const filterCharacters = event => {
+    let filterArray = initialCharacters;
+    filterArray = filterArray.filter(
+      item =>
+        item.name.toLowerCase().search(event.target.value.toLowerCase()) !== -1
+    );
+    setCharactersList(filterArray);
+  };
 
   return (
-    <section className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
-    </section>
+    <>
+      <H1Styled>Character List</H1Styled>
+      <SearchForm onSearch={filterCharacters} />
+      {charactersList.map(character => {
+        return (
+          <CListStyled key={character.id}>
+            <p> Character Name: {character.name}</p>
+            <p>Character species: {character.species}</p>
+            <p> Character gender: {character.gender}</p>
+            <Route
+              render={props => (
+                <CharacterClicked
+                  {...props}
+                  character={character}
+                />
+              )}
+            />
+          </CListStyled>
+        );
+      })}
+    </>
   );
 }
+
+const CharacterClicked = (character) => {
+  const id = character.character.id;
+  return (
+    <NavLink to={`/components/CharacterList/${id}`}>
+      Click to view Character
+    </NavLink>
+  );
+};

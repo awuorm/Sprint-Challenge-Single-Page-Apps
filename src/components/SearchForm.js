@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React  from "react";
+import { tsPropertySignature } from "@babel/types";
+import styled from "styled-components";
 
-export default function SearchForm() {
- 
+ const StyledInput= styled.input`
+    margin: 1em;
+    padding: 1em;
+    width: 50%;
+    margin-left: 20%;
+ `;
+
+
+export default function SearchForm(props) {
   return (
     <section className="search-form">
-     // Add a search form here
+      <StyledInput type="search" onChange={props.onSearch} placeholder="search" />
     </section>
   );
 }
