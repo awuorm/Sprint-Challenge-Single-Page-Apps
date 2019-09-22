@@ -47,7 +47,7 @@ export default function CharacterList(props) {
   return (
     <>
       <H1Styled>Character List</H1Styled>
-      <SearchForm onSearch={filterCharacters} />
+      {/* <SearchForm onSearch={filterCharacters} /> */}
       {charactersList.map(character => {
         return (
           <CListStyled key={character.id}>

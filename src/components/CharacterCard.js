@@ -29,7 +29,7 @@ export default function CharacterCard(props) {
 
   return (
     <>
-      <NavLink to="/">Home</NavLink>
+      <NavLink  to="/">Home</NavLink>
       <H1Styled>Character</H1Styled>
       <img src={`${character.image}`} alt={`${character.image}`} />
       <p> Character Name: {character.name}</p>
